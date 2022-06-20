@@ -1,14 +1,24 @@
 import React, {useState} from "react";
 
-export const Categories = () => {
-    let [state, setState] = useState(0)
+export type CategoryId= {
+    categoryID: number,
+    setCategoryID: (id:number)=> void
+    }
 
-    const categories = ['Su mėsa', 'Vegetariška', 'Grill', 'Aštrios', 'Calcone']
+export const Categories = ({categoryID, setCategoryID, ...props}: CategoryId) => {
+
+
+    const categories = ['Visos' ,'Su mėsa', 'Vegetariška', 'Grill', 'Aštrios', 'Calcone']
+
+    const onClickCategory =(id:number)=> {
+        setCategoryID(id)
+    }
+
     return (
         <div className="categories">
             <ul>
-                {categories.map((el , i) => (
-                    <li key={i} onClick={()=> {setState(i)}} className={state=== i? "active" : ''}>{el}</li>
+                {categories.map((categoryName , i)   => (
+                    <li key={i} onClick={()=> onClickCategory(i)} className={categoryID=== i? "active" : ''}>{categoryName}</li>
                         ) )}
 
             </ul>

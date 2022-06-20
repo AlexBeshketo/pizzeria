@@ -1,6 +1,42 @@
-import React from "react";
+import React, {useState} from "react";
+
+import top from '../../assets/img/topIcon.svg'
+import down from '../../assets/img/downIcon.svg'
+import {useAppDispatch, useAppSelector} from "../../stateRedux/store";
+import {setSort} from "../../stateRedux/filterSlice";
+
+export type sortsType = { name: string, sort: string, type: string }[]
+export type sortType = { name: string, sort: string, type: string }
+
+
+export type SortType = {
+    sortType: { name: string, sort: string, type: string }
+    setSortType: (i: any) => void
+}
+
 
 export const Sort = () => {
+
+    const sortType = useAppSelector((state) => state.filter.sortType)
+    const dispatch = useAppDispatch()
+
+
+    const [isVisible, setIsVisible] = useState(false)
+
+    const sorts: sortsType = [
+        {name: 'populiarumą', sort: 'rating', type: 'up'},
+        {name: 'populiarumą', sort: '-rating', type: 'down'},
+        {name: 'kainą', sort: 'price', type: 'up'},
+        {name: 'kainą', sort: '-price', type: 'down'},
+        {name: 'abėcėlę', sort: 'title', type: 'up'},
+        {name: 'abėcėlę', sort: '-title', type: 'down'}
+    ]
+
+    const onClickSelectsList = (i: sortType) => {
+        dispatch(setSort(i))
+        setIsVisible(false)
+    }
+
     return (
         <div className="sort">
             <div className="sort__label">
@@ -17,15 +53,27 @@ export const Sort = () => {
                     />
                 </svg>
                 <b>Rūšiuoti pagal:</b>
-                <span>populiarumą</span>
+                <span onClick={() => {
+                    setIsVisible(!isVisible)
+                }}>{sortType.name}</span>
             </div>
-            <div className="sort__popup">
-                <ul>
-                    <li className="active">populiarumą</li>
-                    <li>kainą</li>
-                    <li>abėcėlę</li>
-                </ul>
-            </div>
+            {isVisible && (
+                <div className="sort__popup">
+
+                    <ul>
+                        {sorts.map((obj, i) => (
+                            <li key={i} onClick={() => onClickSelectsList(obj)}
+                                className={sortType.sort === obj.sort ? "active" : ''}>{obj.name}
+                                <span><img alt='photo' className='icon' src={obj.type === 'up' ? top : down}/> </span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <img src="" alt=""/>
+                </div>
+            )}
+
+
         </div>
     );
 };
