@@ -25,6 +25,22 @@ body {
 .content {
   padding: 40px 0;
 
+  &_error_info {
+    margin: 70px auto;
+    width: 580px;
+
+    h2 {
+
+      font-size: 32px;
+      font-weight: 700;
+
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+  }
 
   &__title {
     margin: 35px 0;
@@ -85,8 +101,6 @@ body {
     }
     @media (max-width: 784px) {
       .categories {
-
-
         ul {
           li {
             padding: 7px 12px;
@@ -95,7 +109,6 @@ body {
       }
 
     }
-
   }
 }
 
@@ -177,10 +190,18 @@ body {
 
   &__item {
     display: flex;
+
     width: 100%;
+    max-width: 2000px;
     border-top: 1px solid $gray-line;
     padding-top: 30px;
     margin-top: 30px;
+
+    ////VLADDDDDDD
+    //@media (max-width: 950px) {
+    //
+    //  flex-direction:column;
+    //  }
 
     &-img {
       display: flex;
@@ -270,6 +291,7 @@ body {
           position: relative;
         }
 
+
         &:hover,
         &:active {
           border-color: darken($color: $gray-line, $amount: 80);
@@ -300,20 +322,26 @@ body {
     &-buttons {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-top: 40px;
+
 
       .go-back-btn {
         display: flex;
+
         align-items: center;
         justify-content: center;
-        width: 210px;
+        //width: 210px;
 
         border-color: darken($color: $gray-line, $amount: 10);
 
         span {
+
+          padding-right: 15px;
           color: darken($color: $gray-line, $amount: 20);
-          font-weight: 500;
           font-weight: 600;
+          font-size: 20px;
+
         }
 
         &:hover {
@@ -336,10 +364,10 @@ body {
       }
 
       .pay-btn {
-        font-size: 16px;
+        font-size: 19px;
         font-weight: 600;
-        width: 210px;
-        padding: 16px;
+        //width: 210px;
+        //padding: 16px;
       }
     }
   }

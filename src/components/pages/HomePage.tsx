@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Categories} from "../Categories/Categories";
 import {Sort} from "../Sort/Sort";
 import PizzaSkeleton from "../PizzaBlock/pizzaBlockSkeleton";
@@ -7,6 +7,7 @@ import {PizzasElementsType} from "../../App";
 import Pagination from "../Pagination/Pagination";
 import {useAppDispatch, useAppSelector} from "../../stateRedux/store";
 import {setCategoryId, setCurrentPage} from "../../stateRedux/filterSlice";
+import {fetchPizzas, Status} from "../../stateRedux/pizzasSlice";
 
 
 const HomePage = () => {
@@ -15,39 +16,22 @@ const HomePage = () => {
 
     const searchInputValue = useAppSelector((state) => state.search.searchInputValue)
     const {sortType, categoryID, currentPage} = useAppSelector((state) => state.filter)
+    const {items, status} = useAppSelector((state) => state.pizza)
 
 
-    const [items, setItems] = useState([])
-    const [flagSkeleton, setFlagSkeleton] = useState(false)
-    // const [currentPage, setCurrentPage] = useState(1)  //pagination
+    const getPizzas = () => {
+        const order = sortType.sort.includes('-') ? 'asc' : 'desc'
+        const sortBy = sortType.sort.replace('-', '')
+        const category = categoryID > 0 ? `category=${categoryID}` : ''
 
+        dispatch(fetchPizzas({order, sortBy, category, currentPage}))
 
-    type initialItems = [
-        {
-            id: number, imageUrl: string, title: string, types: number[],
-            sizes: number[]; price: number; category: number; rating: number;
-        }
-    ]
-
-    const order = sortType.sort.includes('-') ? 'asc' : 'desc'
-    const sortBy = sortType.sort.replace('-', '')
-    const category = categoryID > 0 ? `category=${categoryID}` : ''
+    }
 
     useEffect(() => {
-        const url = `https://629138a9665ea71fe142c328.mockapi.io/items?page=${currentPage}&limit=8&${category}&sortBy=${sortBy}&order=${order}`
-        setFlagSkeleton(true)
+        getPizzas()
+    }, [categoryID, sortType.sort, currentPage])
 
-        fetch(url)
-            .then((res) => {
-                return res.json()
-                    .then((arr => {
-                        setItems(arr)
-                        setFlagSkeleton(false)
-                    }))
-            })
-    }, [categoryID, sortType, currentPage])
-
-    //pagecount- nomer stranici tekushej
 
     const pizzasMap = items.filter((el: PizzasElementsType) => {
         if (searchInputValue !== null) {
@@ -68,14 +52,26 @@ const HomePage = () => {
                     <Categories categoryID={categoryID} setCategoryID={(i) => dispatch(setCategoryId(i))}/>
                     <Sort/>
                 </div>
-                <h2 className="content__title">Visos picos </h2>
-                <div className="content__items">
 
-                    {flagSkeleton ? [...(new Array(6))].map((_, index) => <PizzaSkeleton key={index}/>)
-                        : pizzasMap}
+                {
+                    status === Status.ERROR ? (<div className="content_error_info">
+                            <h2>Picos dar nėra... Pabandykitė veliau
+                                <span>😕</span>
+                            </h2>
+                        </div>)
+                        :
 
-                </div>
-                <Pagination value={currentPage} onChangePage={onChangePage}/>
+                        (<>
+                            <h2 className="content__title">Visos picos </h2>
+                            <div className="content__items">
+                                {status === Status.LOADING ? [...(new Array(6))].map((_, index) => <PizzaSkeleton
+                                        key={index}/>)
+                                    : pizzasMap}
+                            </div>
+                            <Pagination value={currentPage} onChangePage={onChangePage}/>
+                        </>)}
+
+
             </div>
 
         </>
