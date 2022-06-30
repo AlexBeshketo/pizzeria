@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/projectpizzeriareact/static/css/main.8a962650.css",
-    "main.js": "/projectpizzeriareact/static/js/main.1caa5702.js",
-    "static/js/787.28cb0dcd.chunk.js": "/projectpizzeriareact/static/js/787.28cb0dcd.chunk.js",
-    "static/media/empty-cart.png": "/projectpizzeriareact/static/media/empty-cart.db905d1f4b063162f25b.png",
-    "static/media/pizza-logo.svg": "/projectpizzeriareact/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
-    "index.html": "/projectpizzeriareact/index.html",
-    "static/media/Icon_Search.svg": "/projectpizzeriareact/static/media/Icon_Search.729e04b0698c757fc36eceab3010c36b.svg",
-    "static/media/downIcon.svg": "/projectpizzeriareact/static/media/downIcon.31ad64e56ea8575fe65b13f315bfd7bd.svg",
-    "static/media/CloseIcon.svg": "/projectpizzeriareact/static/media/CloseIcon.3958c9d0552e14ff5bb0637c8562353b.svg",
-    "static/media/topIcon.svg": "/projectpizzeriareact/static/media/topIcon.e7c563e87039ca41dd3e22b67619c20e.svg",
-    "main.8a962650.css.map": "/projectpizzeriareact/static/css/main.8a962650.css.map",
-    "main.1caa5702.js.map": "/projectpizzeriareact/static/js/main.1caa5702.js.map",
-    "787.28cb0dcd.chunk.js.map": "/projectpizzeriareact/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/pizzeria/static/css/main.8a962650.css",
+    "main.js": "/pizzeria/static/js/main.bb2c5f9e.js",
+    "static/js/787.28cb0dcd.chunk.js": "/pizzeria/static/js/787.28cb0dcd.chunk.js",
+    "static/media/empty-cart.png": "/pizzeria/static/media/empty-cart.db905d1f4b063162f25b.png",
+    "static/media/pizza-logo.svg": "/pizzeria/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
+    "index.html": "/pizzeria/index.html",
+    "static/media/Icon_Search.svg": "/pizzeria/static/media/Icon_Search.729e04b0698c757fc36eceab3010c36b.svg",
+    "static/media/downIcon.svg": "/pizzeria/static/media/downIcon.31ad64e56ea8575fe65b13f315bfd7bd.svg",
+    "static/media/CloseIcon.svg": "/pizzeria/static/media/CloseIcon.3958c9d0552e14ff5bb0637c8562353b.svg",
+    "static/media/topIcon.svg": "/pizzeria/static/media/topIcon.e7c563e87039ca41dd3e22b67619c20e.svg",
+    "main.8a962650.css.map": "/pizzeria/static/css/main.8a962650.css.map",
+    "main.bb2c5f9e.js.map": "/pizzeria/static/js/main.bb2c5f9e.js.map",
+    "787.28cb0dcd.chunk.js.map": "/pizzeria/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8a962650.css",
-    "static/js/main.1caa5702.js"
+    "static/js/main.bb2c5f9e.js"
   ]
 }
